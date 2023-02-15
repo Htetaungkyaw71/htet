@@ -46,23 +46,30 @@ body{
 }
 
 .overlay{
-    position: fixed;
+    position: absolute;
     display: none;
     top: 0;
     left: 0;
     right: 0;
-    margin-left:auto;
-    margin-right:auto;
-    background-color: white;
-    z-index: 2;
+    bottom: 0;
+    background-color: transparent;
+    z-index: 9;
     border-radius: 30px;
     padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner {
+    background-color: white;
     width: 300px;
     height: 300px;
-    margin-top: 100px;
-
-
+    cursor: pointer;
+    z-index: 10;
+    position: absolute;
 }
+
+
 
 @media screen and (max-width:498px) {
     body {
@@ -70,15 +77,10 @@ body{
         justify-content: center;
         align-items: center;
     }
-    .overlay{
-        width: 250px;
-    }
 }
 
 @media screen and (min-width:1298px) {
-    .overlay{
-        width: 500px;
-    }
+    
 }
 
 
