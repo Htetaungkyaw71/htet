@@ -4,10 +4,17 @@ let cv = document.getElementById('cv')
 let skill = document.getElementById('skill')
 let contact = document.getElementById('contact')
 let overlay = document.querySelector('.overlay')
+let wallpaper = document.querySelector('#wallpaper')
+let body = document.querySelector('body')
+
+
 
 
 let div = document.createElement('div')
 div.className = "inner"
+
+let contact_div = document.createElement('div')
+contact_div.className = "inner"
 
 
 
@@ -21,11 +28,41 @@ about.onclick = ()=>{
 }
 
 contact.onclick = ()=>{
-  change_dom(contact_dom())
+  change_contact(contact_dom())
 }
 
 skill.onclick = ()=>{
   change_dom(skill_dom())
+}
+
+wallpaper.onclick = ()=>{
+  change_dom(wallpaper_dom())
+}
+
+function change_contact(func){
+  overlay.style.display = "flex"
+  contact_div.innerHTML = func
+  overlay.appendChild(contact_div)
+  let close = document.querySelector('.close')
+  close.onclick = ()=>{
+    contact_div.classList.add('hidden');
+    setTimeout(function() {
+      contact_div.classList.remove('hidden');
+      overlay.removeChild(contact_div)
+      overlay.style.display = 'none';
+    }, 200);
+}
+let form_submit = document.querySelector(".send")
+form_submit.onclick = (e)=>{
+  e.preventDefault()
+  let subject = document.querySelector(".email").value;
+  let message = document.querySelector(".message").value;
+  window.open(`mailto:htetaung200071@gmail.com?subject=${subject}&body=${message}`);
+
+  document.querySelector(".email").value = "";
+  document.querySelector(".message").value = "";
+}
+
 }
 
 function change_dom(func){
@@ -40,9 +77,19 @@ function change_dom(func){
       div.classList.add('hidden');
       setTimeout(function() {
         div.classList.remove('hidden');
+        overlay.removeChild(div)
         overlay.style.display = 'none';
       }, 200);
   }
+
+  let bgs = document.querySelectorAll("#bg")
+  bgs.forEach(bg=>{
+    let bg_className = bg.className;
+    bg.onclick = ()=>{
+      body.style.backgroundImage = `url('./images/${bg_className}.jpg')`
+    }
+  })
+
   
 }
 
@@ -67,7 +114,7 @@ function project_dom(){
       <li class="slide">
       <img src="./images/game.png" class="slide-img" />
       <div class="slide-description">
-        <h2>Gamery<h4>
+        <h2>Gamery</h2>
         <p>This is free to play games web application. Users can download free games in this app.</p>
         <h4>Technologies</h4>
           <span>HTML,</span>
@@ -84,7 +131,7 @@ function project_dom(){
         <li class="slide">
         <img src="./images/chat.png" class="slide-img" />
         <div class="slide-description">
-          <h2>Chat Valley<h4>
+          <h2>Chat Valley</h2>
           <p>Users can chat random strangers from around the world. Users need to allow their camera and microphone in web browsers.</p>
           <h4>Technologies</h4>
             <span>HTML,</span>
@@ -103,7 +150,7 @@ function project_dom(){
         <li class="slide">
           <img src="./images/ask.png" class="slide-img" />
           <div class="slide-description">
-            <h2>Ask Me<h4>
+            <h2>Ask Me</h2>
             <p>
             Question and Answer application. Users can create account and ask questions.</p>
             <h4>Technologies</h4>
@@ -122,7 +169,7 @@ function project_dom(){
       <li class="slide">
         <img src="./images/s.png" class="slide-img" />
         <div class="slide-description">
-          <h2>Shoppe<h4>
+          <h2>Shoppe</h2>
           <p>
           A simple and small ecommerce application. Users can view products and can add products to cart and can checkout.</p>
           <h4>Technologies</h4>
@@ -171,10 +218,11 @@ function contact_dom(){
           </a>
       </div>
       <hr>
-      <form class="form-control">
-          <input type="email" placeholder="Email" class="email" required>
-          <textarea name="message" Placeholder="Message" class="message" cols="58" rows="10" required></textarea>
-          <input type="submit" value="Send" class="send">
+      <form class="form-control" >
+          <input type="text" placeholder="Subject" class="email" required autofocus>
+          <textarea name="message" Placeholder="Message" class="message" cols="58" rows="10" required autofocus></textarea>
+          <input type="button" value="Send" class="send">
+         
       </form>
   </div>
 
@@ -183,6 +231,9 @@ function contact_dom(){
   `
   return render
 }
+
+
+
 
 function skill_dom(){
   let render = `
@@ -212,6 +263,42 @@ function skill_dom(){
           </div>
       
   </div>
+    
+  </div>
+
+ 
+</div>
+  `
+  return render
+}
+
+function wallpaper_dom(){
+  let render = `
+  <div class="skill">
+  <div class="header">
+      <button class="close">X</button>
+      <p>
+          Change Wallpaper
+      </p>
+  </div>
+  <div class="skill-main">
+    <div>
+        <div class="tech">
+          <img src="./images/bg11.jpg" alt="" id="bg" class="bg1">
+          <img src="./images/bg22.jpg" alt="" id="bg" class="bg2">
+          <img src="./images/bg33.jpg" alt="" id="bg" class="bg3">
+        </div>
+        <div class="tech">
+          <img src="./images/bg44.jpg" alt="" id="bg" class="bg4">
+          <img src="./images/bg55.jpg" alt="" id="bg" class="bg5">
+          <img src="./images/bg66.jpg" alt="" id="bg" class="bg6">
+        </div>    
+        <div class="tech">
+          <img src="./images/bg77.jpg" alt="" id="bg" class="bg7">
+          <img src="./images/bg88.jpg" alt="" id="bg" class="bg8">
+          <img src="./images/wallpaper.jpg" alt="" id="bg" class="wallpaper">
+        </div>    
+    </div>
     
   </div>
 
@@ -301,4 +388,20 @@ function slide(){
     slidesContainer.scrollLeft -= slideWidth;
   });
 }
+
+// Loader
+
+
+
+let spinnerWrapper = document.querySelector('.spinner-wrapper');
+
+window.addEventListener('load', function () {
+    spinnerWrapper.style.display = 'none';
+    spinnerWrapper.parentElement.removeChild(spinnerWrapper);
+    document.querySelector('html,body').style.overflow = 'auto';
+});
+
+
+
+
 
