@@ -220,7 +220,7 @@ function contact_dom(){
       <hr>
       <form class="form-control" >
           <input type="text" placeholder="Subject" class="email" required autofocus>
-          <textarea name="message" Placeholder="Message" class="message" cols="58" rows="10" required autofocus></textarea>
+          <textarea name="message" Placeholder="Message" class="message"  required autofocus></textarea>
           <input type="button" value="Send" class="send">
          
       </form>
