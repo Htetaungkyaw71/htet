@@ -184,6 +184,27 @@ function project_dom(){
           <a href="https://github.com/Htetaungkyaw71/Ecommerce" target="_blank">Source Code</a>
         </div>
     </li>
+       
+        <li class="slide">
+        <img src="./images/s.png" class="slide-img" />
+        <div class="slide-description">
+          <h2>Budget</h2>
+          <p>
+           A budget web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what..</p>
+          <h4>Technologies</h4>
+            <span>HTML,</span>
+            <span>CSS,</span>
+            <span>JavaScript,</span>
+            <span>Rubu on Rails,</span>
+            <span>Postgresql</span>
+            <span>Rspec</span>
+        <br>
+        <br>
+          <a href="https://budget-jf0u.onrender.com/" target="_blank" >Live Demo</a>
+          <a href="https://github.com/Htetaungkyaw71/Budget-app" target="_blank">Source Code</a>
+        </div>
+    </li>
+    
     </ul>
   </section>
    </div>
