@@ -186,7 +186,7 @@ function project_dom(){
     </li>
        
         <li class="slide">
-        <img src="./images/s.png" class="slide-img" />
+        <img src="./images/budget.png" class="slide-img" />
         <div class="slide-description">
           <h2>Budget</h2>
           <p>
